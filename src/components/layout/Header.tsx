@@ -1,8 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Package, Search, Bell, User } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { Link, useLocation } from "react-router-dom";
+import { Package, Search, Bell, User } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface HeaderProps {
   searchValue?: string;
@@ -11,12 +11,16 @@ interface HeaderProps {
 }
 
 const navItems = [
-  { label: 'Home', path: '/' },
-  { label: 'Inventory', path: '/inventory' },
-  { label: 'Catalogue', path: '/catalogue' },
+  { label: "Home", path: "/" },
+  { label: "Inventory", path: "/inventory" },
+  { label: "Catalogue", path: "/catalogue" },
 ];
 
-export function Header({ searchValue, onSearchChange, showSearch = true }: HeaderProps) {
+export function Header({
+  searchValue,
+  onSearchChange,
+  showSearch = true,
+}: HeaderProps) {
   const location = useLocation();
 
   return (
@@ -24,11 +28,17 @@ export function Header({ searchValue, onSearchChange, showSearch = true }: Heade
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
+          <Link
+            to="/"
+            className="flex items-center gap-2 hover:opacity-90 transition-opacity"
+            aria-label="StoreDB - Home"
+          >
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <Package className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="font-semibold text-lg hidden sm:inline">StoreDB</span>
+            <span className="font-semibold text-lg hidden sm:inline">
+              StoreDB
+            </span>
           </Link>
 
           {/* Navigation */}
@@ -38,10 +48,10 @@ export function Header({ searchValue, onSearchChange, showSearch = true }: Heade
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  'px-4 py-2 rounded-md text-sm font-medium transition-colors',
+                  "px-4 py-2 rounded-md text-sm font-medium transition-colors",
                   location.pathname === item.path
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-header-foreground/80 hover:text-header-foreground hover:bg-sidebar-accent'
+                    ? "bg-primary text-primary-foreground"
+                    : "text-header-foreground/80 hover:text-header-foreground hover:bg-sidebar-accent"
                 )}
               >
                 {item.label}
@@ -63,10 +73,18 @@ export function Header({ searchValue, onSearchChange, showSearch = true }: Heade
                 />
               </div>
             )}
-            <Button variant="ghost" size="icon" className="text-header-foreground/80 hover:text-header-foreground">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-header-foreground/80 hover:text-header-foreground"
+            >
               <Bell className="w-5 h-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="text-header-foreground/80 hover:text-header-foreground">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-header-foreground/80 hover:text-header-foreground"
+            >
               <User className="w-5 h-5" />
             </Button>
           </div>
@@ -81,10 +99,10 @@ export function Header({ searchValue, onSearchChange, showSearch = true }: Heade
               key={item.path}
               to={item.path}
               className={cn(
-                'px-4 py-2 text-sm font-medium transition-colors',
+                "px-4 py-2 text-sm font-medium transition-colors",
                 location.pathname === item.path
-                  ? 'text-primary'
-                  : 'text-header-foreground/70'
+                  ? "text-primary"
+                  : "text-header-foreground/70"
               )}
             >
               {item.label}
